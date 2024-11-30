@@ -4,12 +4,13 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "prisma generate && next build",
     "postinstall": "prisma generate",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "prisma": "^5.21.1",
     "@heroicons/react": "^2.2.0",
     "@monaco-editor/react": "^4.6.0",
     "@prisma/client": "^5.21.1",
