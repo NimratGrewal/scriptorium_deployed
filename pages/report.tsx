@@ -56,19 +56,19 @@ const ReportPage: React.FC = () => {
   };
 
   return (
-    <div style={styles.container}>
-      <h1 style={styles.heading}>
+    <div className={styles.container}>
+      <h1 className={styles.heading}>
         Report {isBlogReport ? "Blog" : "Comment"}
       </h1>
-      <form onSubmit={handleSubmit} style={styles.form}>
+      <form onSubmit={handleSubmit} className={styles.form}>
         <textarea
-          style={styles.textarea}
+          className={styles.textarea}
           placeholder="Describe the issue..."
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
-        {error && <p style={styles.error}>{error}</p>}
-        <button type="submit" style={styles.submitButton} disabled={isLoading}>
+        {error && <p className={styles.error}>{error}</p>}
+        <button type="submit" className={styles.submitButton} disabled={isLoading}>
           {isLoading ? "Submitting..." : "Submit Report"}
         </button>
       </form>
@@ -77,43 +77,51 @@ const ReportPage: React.FC = () => {
 };
 
 const styles = {
-  container: {
-    maxWidth: "600px",
-    margin: "0 auto",
-    padding: "20px",
-    textAlign: "center",
-  },
-  heading: {
-    fontSize: "2rem",
-    marginBottom: "20px",
-  },
-  form: {
-    display: "flex",
-    flexDirection: "column",
-    gap: "15px",
-  },
-  textarea: {
-    width: "100%",
-    height: "150px",
-    padding: "10px",
-    borderRadius: "8px",
-    border: "1px solid #ccc",
-    fontSize: "16px",
-  },
-  submitButton: {
-    padding: "10px 20px",
-    backgroundColor: "#0056b3",
-    color: "white",
-    border: "none",
-    borderRadius: "5px",
-    cursor: "pointer",
-    fontSize: "16px",
-    transition: "background-color 0.3s",
-  },
-  error: {
-    color: "red",
-    fontSize: "14px",
-  },
+  container: "max-w-md mx-auto p-5 text-center",
+  heading: "text-2xl mb-5",
+  form: "flex flex-col gap-4",
+  textarea: "w-full h-40 p-3 rounded-lg border border-gray-300 text-base resize-none",
+  submitButton: "px-5 py-2 bg-blue-600 text-white rounded-md text-base transition-colors hover:bg-blue-800",
+  error: "text-red-600 text-sm",
 };
+
+// const styles = {
+//   container: {
+//     maxWidth: "600px",
+//     margin: "0 auto",
+//     padding: "20px",
+//     textAlign: "center",
+//   },
+//   heading: {
+//     fontSize: "2rem",
+//     marginBottom: "20px",
+//   },
+//   form: {
+//     display: "flex",
+//     flexDirection: "column",
+//     gap: "15px",
+//   },
+//   textarea: {
+//     width: "100%",
+//     height: "150px",
+//     padding: "10px",
+//     borderRadius: "8px",
+//     border: "1px solid #ccc",
+//     fontSize: "16px",
+//   },
+//   submitButton: {
+//     padding: "10px 20px",
+//     backgroundColor: "#0056b3",
+//     color: "white",
+//     border: "none",
+//     borderRadius: "5px",
+//     cursor: "pointer",
+//     fontSize: "16px",
+//     transition: "background-color 0.3s",
+//   },
+//   error: {
+//     color: "red",
+//     fontSize: "14px",
+//   },
 
 export default ReportPage;
