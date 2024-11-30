@@ -95,20 +95,19 @@ const CodeEditor: React.FC = () => {
   };
 
   return (
-    <div style={styles.container} className="dark:bg-gray-900">
-      <header style={styles.header} className="dark:bg-gray-800 dark:text-white">
+    <div className={styles.container}>
+      <header className={styles.header}>
         <h1>Code Editor</h1>
       </header>
-      <div style={styles.controls} className="dark:bg-gray-800">
-        <button id="run-button" onClick={handleRun} style={styles.runButton} disabled={isLoading}>
+      <div className={styles.controls}>
+        <button id="run-button" onClick={handleRun} className={styles.runButton} disabled={isLoading}>
           {isLoading ? 'Running...' : 'Run Code'}
         </button>
         <select
           value={language}
           onChange={handleLanguageChange}
-          style={styles.languageSelect}
+          className={styles.languageSelect}
           disabled={isLoading}
-          className="dark:bg-gray-800 dark:text-white"
         >
           <option value="javascript">JavaScript</option>
           <option value="java">Java</option>
@@ -141,15 +140,14 @@ const CodeEditor: React.FC = () => {
         placeholder="Enter input for stdin..."
         value={stdin}
         onChange={(e) => setStdin(e.target.value)}
-        style={styles.stdinInput}
+        className={styles.stdinInput}
         disabled={isLoading}
-        className='dark:bg-gray-800 dark:text-white'
       />
 
-      <div style={styles.outputBox} className='dark:bg-gray-800 dark:text-black'>
+      <div className={styles.outputBox}>
         <strong>Output:</strong>
-        <div className="dark:text-black">{output}</div>
-        {error && <div style={styles.error}>{error}</div>}
+        <div className="dark:text-white">{output}</div>
+        {error && <div className={styles.error}>{error}</div>}
       </div>
     </div>
   );
@@ -157,67 +155,78 @@ const CodeEditor: React.FC = () => {
 
 // Inline styling objects for improved UI
 const styles = {
-  container: {
-    height: '100vh',
-    display: 'flex',
-    flexDirection: 'column',
-    padding: '10px',
-    backgroundColor: '#f5f5f5',
-    dark: 'bg-gray-900'
-  },
-  header: {
-    padding: '10px',
-    backgroundColor: '#333',
-    color: '#fff',
-    textAlign: 'center',
-  },
-  controls: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    marginBottom: '20px',
-  },
-  runButton: {
-    padding: '10px 20px',
-    backgroundColor: '#007bff',
-    color: '#fff',
-    border: 'none',
-    borderRadius: '5px',
-    cursor: 'pointer',
-    transition: 'background-color 0.3s ease',
-  },
-  languageSelect: {
-    padding: '10px',
-    fontSize: '14px',
-    borderRadius: '5px',
-    border: '1px solid #ccc',
-  },
-  stdinInput: {
-    width: '100%',
-    padding: '10px',
-    marginTop: '10px',
-    borderRadius: '5px',
-    border: '1px solid #ccc',
-    minHeight: '80px',
-    fontFamily: 'monospace',
-    fontSize: '14px',
-    resize: 'vertical',
-  },
-  outputBox: {
-    padding: '10px',
-    marginTop: '20px',
-    backgroundColor: '#fff',
-    border: '1px solid #ccc',
-    borderRadius: '5px',
-    minHeight: '100px',
-    whiteSpace: 'pre-wrap',
-    overflowY: 'auto',
-    fontFamily: 'monospace',
-    fontSize: '14px',
-  },
-  error: {
-    color: 'red',
-    marginTop: '10px',
-  },
+  container: "h-screen flex flex-col p-2.5 bg-gray-100 dark:bg-gray-900",
+  header: "p-2.5 bg-gray-800 text-white text-center dark:bg-gray-800 dark:text-white",
+  controls: "flex justify-between mb-5 dark:bg-gray-800",
+  runButton: "py-2 px-5 bg-blue-500 text-white border-none rounded-lg cursor-pointer transition-all duration-300 ease-in-out hover:bg-blue-600",
+  languageSelect: "py-2 px-2.5 text-sm rounded-lg border border-gray-300 dark:bg-gray-800 dark:text-white",
+  stdinInput: "w-full py-2.5 px-2.5 mt-2.5 rounded-lg border border-gray-300 min-h-[80px] font-mono text-sm resize-y dark:bg-gray-800 dark:text-white",
+  outputBox: "p-2.5 mt-5 bg-white border border-gray-300 rounded-lg min-h-[100px] whitespace-pre-wrap overflow-y-auto font-mono text-sm dark:bg-gray-800 dark:text-white",
+  error: "text-red-500 mt-2.5",
 };
+
+// const styles = {
+//   container: {
+//     height: '100vh',
+//     display: 'flex',
+//     flexDirection: 'column',
+//     padding: '10px',
+//     backgroundColor: '#f5f5f5',
+//     dark: 'bg-gray-900'
+//   },
+//   header: {
+//     padding: '10px',
+//     backgroundColor: '#333',
+//     color: '#fff',
+//     textAlign: 'center',
+//   },
+//   controls: {
+//     display: 'flex',
+//     justifyContent: 'space-between',
+//     marginBottom: '20px',
+//   },
+//   runButton: {
+//     padding: '10px 20px',
+//     backgroundColor: '#007bff',
+//     color: '#fff',
+//     border: 'none',
+//     borderRadius: '5px',
+//     cursor: 'pointer',
+//     transition: 'background-color 0.3s ease',
+//   },
+//   languageSelect: {
+//     padding: '10px',
+//     fontSize: '14px',
+//     borderRadius: '5px',
+//     border: '1px solid #ccc',
+//   },
+//   stdinInput: {
+//     width: '100%',
+//     padding: '10px',
+//     marginTop: '10px',
+//     borderRadius: '5px',
+//     border: '1px solid #ccc',
+//     minHeight: '80px',
+//     fontFamily: 'monospace',
+//     fontSize: '14px',
+//     resize: 'vertical',
+//   },
+//   outputBox: {
+//     padding: '10px',
+//     marginTop: '20px',
+//     backgroundColor: '#fff',
+//     border: '1px solid #ccc',
+//     borderRadius: '5px',
+//     minHeight: '100px',
+//     whiteSpace: 'pre-wrap',
+//     overflowY: 'auto',
+//     fontFamily: 'monospace',
+//     fontSize: '14px',
+//   },
+//   error: {
+//     color: 'red',
+//     marginTop: '10px',
+//   },
+
 
 export default CodeEditor;
